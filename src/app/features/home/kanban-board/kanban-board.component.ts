@@ -46,7 +46,10 @@ export class KanbanBoardComponent {
         this.tasks = tasks;
         this.isLoading = false
       },
-      error: (err) => console.error(err),
+      error: (err) => {
+        this.isLoading = false
+        console.error(err)
+      },
       complete: () => this.isLoading = false
     });
   }

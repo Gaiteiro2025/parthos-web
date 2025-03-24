@@ -13,8 +13,5 @@
                 <app-kanban-card [task]="task" (click)="openTaskDialog(task)"></app-kanban-card>
             </div>
         </div>
-        <div *ngIf="!isLoading && !tasks.length">
-            Nenhuma tarefa encontrada.
-        </div>
     </div>
 </div>
