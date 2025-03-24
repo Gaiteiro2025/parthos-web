@@ -5,6 +5,3 @@ export interface UserAuth {
     password: string;
 }
 
-export interface User extends UserAuth {
-    id: string;
-}

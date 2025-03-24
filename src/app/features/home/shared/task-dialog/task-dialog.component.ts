@@ -8,19 +8,21 @@ import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/materia
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { MatTabsModule } from '@angular/material/tabs';
 import { TaskPriority } from '@core/enums/task-priority.enum';
 import { TaskStatus } from '@core/enums/task-status.enum';
 import { TaskType } from '@core/enums/task-type.enum';
 import { Task } from '@core/interfaces/task.interface';
-import { User } from '@core/interfaces/user-auth.interface';
+import { User } from '@core/interfaces/user.interface';
 import { AuthService } from '@core/services/auth/auth.service';
 import { TaskService } from '@core/services/task/task.service';
+import { TaskHistoryComponent } from '../task-history/task-history.component';
 
 @Component({
   selector: 'app-create-task-dialog',
   imports: [ReactiveFormsModule, CommonModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatDialogModule, MatOptionModule, MatDatepickerModule,
     MatNativeDateModule,
-    MatButtonModule,
+    MatButtonModule, MatTabsModule, TaskHistoryComponent,
   ],
   standalone: true,
   templateUrl: './task-dialog.component.html',

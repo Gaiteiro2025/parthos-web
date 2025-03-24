@@ -6,7 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { TaskStatus } from '@core/enums/task-status.enum';
-import { User } from '@core/interfaces/user-auth.interface';
+import { User } from '@core/interfaces/user.interface';
 import { AuthService } from '@core/services/auth/auth.service';
 import { TaskService } from '@core/services/task/task.service';
 import { ToastrModule } from 'ngx-toastr';
@@ -43,8 +43,8 @@ export class KanbanBoardComponent {
     this.isLoading = true;
     this.taskService.findByUserId(this.user.id).subscribe({
       next: (tasks) => {
-        console.log('teste')
         this.tasks = tasks;
+        this.isLoading = false
       },
       error: (err) => console.error(err),
       complete: () => this.isLoading = false
@@ -65,6 +65,7 @@ export class KanbanBoardComponent {
   openTaskDialog(task: Task): void {
     this.dialog.open(TaskDialogComponent, {
       width: '50vw',
+      height: '80%',
       maxWidth: '90vw',
       data: task
     }).afterClosed();

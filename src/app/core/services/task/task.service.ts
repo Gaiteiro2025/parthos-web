@@ -43,7 +43,6 @@ export class TaskService {
   findByUserId(userId: string): Observable<Task[]> {
     try {
       const headers = this.getAuthHeaders();
-      console.log(userId)
       return this.http.get<Task[]>(`${this.baseUrl}user/${userId}`, { headers });
     } catch (error) {
       console.error('Erro ao obter tarefas por usuário:', error);

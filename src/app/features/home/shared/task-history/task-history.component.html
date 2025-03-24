@@ -1,0 +1,17 @@
+<mat-vertical-stepper linear>
+    <mat-step *ngFor="let history of taskHistories">
+        <ng-template matStepLabel>{{ history.createdAt | date:'dd/MM/yyyy HH:mm' }} - {{history.action |
+            translateAction}} por {{ history.changedBy.name }}</ng-template>
+        <ng-template matStepContent>
+            <div class="history-content">
+                <p><strong>Alterado por:</strong> {{ history.changedBy.name }}</p>
+                <p><strong>Data:</strong> {{ history.createdAt | date:'dd/MM/yyyy HH:mm' }}</p>
+
+                <p><strong>Campo:</strong> {{ history.fieldChanged }}</p>
+                <p><strong>De:</strong> {{ history.oldValue }}</p>
+                <p><strong>Para:</strong> {{ history.newValue }}</p>
+                <p><strong>Ação:</strong> {{ history.action }}</p>
+            </div>
+        </ng-template>
+    </mat-step>
+</mat-vertical-stepper>
