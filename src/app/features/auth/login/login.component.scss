@@ -1,0 +1,78 @@
+.form {
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  color: white;
+  background-color: #1565c0;
+  text-align: center;
+  width: 100%;
+  max-width: 400px;
+  box-sizing: border-box;
+  z-index: 1;
+
+  .title {
+    font-size: 2em;
+    margin-bottom: 20px;
+    font-family: 'Celtic Garamond', sans-serif;
+    font-weight: bold;
+  }
+
+  .subtitle {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    font-style: italic;
+  }
+
+  .button {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: white;
+    color: rgb(0, 0, 0);
+    font-size: 18px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+
+    &:hover {
+      background: linear-gradient(145deg, #2582ec, #1565c0);
+      box-shadow: 0 0 20px #1565c0;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 300%;
+      height: 300%;
+      background: #fff;
+      animation: magicGlow 1.5s infinite;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0.5;
+    }
+  }
+
+  .forgot {
+    margin-top: 10px;
+    color: #ffffff;
+    font-size: 14px;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}
+
+
+@keyframes magicGlow {
+  0% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}

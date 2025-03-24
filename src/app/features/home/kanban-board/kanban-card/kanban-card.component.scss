@@ -1,0 +1,67 @@
+/* Estilo para os itens (tarefas) dentro das colunas */
+.kanban-item {
+  margin-bottom: 10px;
+}
+
+.task-card {
+  background-color: #f9fafb;
+  border: 1px solid #e1e4e8;
+  border-radius: 4px;
+  padding: 10px;
+  font-size: 1em;
+  cursor: move;
+  transition: transform 0.2s ease;
+}
+
+/* Efeito ao passar o mouse sobre os itens */
+.task-card:hover {
+  transform: scale(1.02);
+  background-color: #ffffff;
+}
+
+mat-card-subtitle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+mat-chip {
+  font-size: 0.875em;
+}
+
+/* Cores baseadas no Jira */
+.bug-chip {
+  background-color: #f44336;
+  /* Vermelho para Bugs */
+  color: white;
+}
+
+.feature-chip {
+  background-color: #4caf50;
+  /* Verde para Tarefas */
+  color: white;
+}
+
+.improvement-chip {
+  background-color: #2196f3;
+  /* Azul para Melhorias */
+  color: white;
+}
+
+.low-priority-chip {
+  background-color: #9e9e9e;
+  /* Cinza para Baixa Prioridade */
+  color: white;
+}
+
+.medium-priority-chip {
+  background-color: #ffeb3b;
+  /* Amarelo para Média Prioridade */
+  color: black;
+}
+
+.high-priority-chip {
+  background-color: #ff5722;
+  /* Laranja para Alta Prioridade */
+  color: white;
+}

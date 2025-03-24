@@ -1,0 +1,20 @@
+<div class="kanban-container" cdkDropListGroup>
+    <div *ngFor="let status of statuses" class="kanban-column" cdkDropList [cdkDropListData]="getTasksByStatus(status)"
+        [cdkDropListConnectedTo]="statuses" (cdkDropListDropped)="onDrop($event, status)">
+        <h3>{{ status }}</h3>
+        <button class="create-task" (click)="openCreateTaskDialog(status)">
+            Criar Tarefa
+        </button>
+        <div *ngIf="isLoading" class="loading-spinner">
+            <mat-spinner diameter="50"></mat-spinner>
+        </div>
+        <div *ngIf="!isLoading && tasks.length">
+            <div *ngFor="let task of getTasksByStatus(status)" cdkDrag [cdkDragData]="task">
+                <app-kanban-card [task]="task" (click)="openTaskDialog(task)"></app-kanban-card>
+            </div>
+        </div>
+        <div *ngIf="!isLoading && !tasks.length">
+            Nenhuma tarefa encontrada.
+        </div>
+    </div>
+</div>

@@ -1,0 +1,84 @@
+/* Estilo para o container do sidenav */
+.sidenav-container {
+  height: 100%;
+  display: flex;
+}
+
+/* Estilo para a barra lateral */
+.sidenav {
+  width: 250px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #1565c0;
+  color: #fff;
+  border-radius: 0;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+  transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+.sidenav .mat-toolbar {
+  background-color: #444;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+}
+
+mat-sidenav-content {
+  margin-left: 250px;
+  transition: margin-left 0.3s ease;
+  padding: 16px;
+  flex-grow: 1;
+}
+
+mat-nav-list a {
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  color: #fff;
+  border-radius: 0;
+  transition: background-color 0.3s ease;
+
+  .nav-color {
+    color: #fff;
+    vertical-align: middle;
+  }
+
+}
+
+mat-nav-list a:hover {
+  background-color: #fff;
+  color: #1565c0;
+
+  .nav-color {
+    color: #1565c0;
+  }
+}
+
+mat-nav-list mat-icon {
+  margin-right: 16px;
+  font-size: 24px;
+
+  &:hover {
+    color: #1565c0;
+  }
+}
+
+/* Estilo para o botão de alternância */
+button[mat-icon-button] {
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  /* Ícones brancos */
+  cursor: pointer;
+  padding: 8px;
+  transition: background-color 0.3s ease;
+}
+
+button[mat-icon-button]:hover {
+  background-color: #555;
+  /* Destaque ao passar o mouse */
+  border-radius: 4px;
+}

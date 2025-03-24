@@ -1,0 +1,25 @@
+<div class="form">
+    <div class="title">Desperte o Herói da Produtividade em Você</div>
+    <div class="subtitle">
+        "No Parthos, cada tarefa concluída é um passo rumo à conquista. Junte-se a nós e transforme suas metas em
+        aventuras épicas!"
+    </div>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+        <div *ngFor="let formInput of formIputRegister">
+            <app-form-input [formInput]="formInput" [control]="registerForm.controls[formInput.name]"></app-form-input>
+        </div>
+
+
+        <button class="button" type="submit" [disabled]="registerForm.invalid">Entrar</button>
+
+        <div *ngIf="errorMessage" class="error-message">
+            {{ errorMessage }}
+        </div>
+        <div style="display: flex;justify-content: space-between;">
+            <a class="forgot" [routerLink]="['/login']" routerLinkActive="router-link-active">logar</a>
+            <a class="forgot" (click)="onForgotPassword()">Esqueci minha senha</a>
+
+        </div>
+    </form>
+</div>

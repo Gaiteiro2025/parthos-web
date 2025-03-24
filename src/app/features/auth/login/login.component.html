@@ -1,0 +1,24 @@
+<div class="form">
+    <div class="title">Bem-vindo, Aventureiro!</div>
+    <div class="subtitle">
+        "Bem-vindo ao Parthos, viajante. Sua jornada de organização começa agora. Desafios aguardam, mas com cada
+        tarefa concluída, você se aproxima de conquistar a paz."
+    </div>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+        <div *ngFor="let formInput of formIputLogin">
+            <app-form-input [formInput]="formInput" [control]="loginForm.controls[formInput.name]"></app-form-input>
+        </div>
+
+
+        <button class="button" type="submit" [disabled]="loginForm.invalid">Entrar</button>
+
+        <div *ngIf="errorMessage" class="error-message">
+            {{ errorMessage }}
+        </div>
+        <div style="display: flex;justify-content: space-between;">
+            <a class="forgot" [routerLink]="['/register']" routerLinkActive="router-link-active">Cadrastre-se</a>
+            <a class="forgot" (click)="onForgotPassword()">Esqueci minha senha</a>
+        </div>
+    </form>
+</div>

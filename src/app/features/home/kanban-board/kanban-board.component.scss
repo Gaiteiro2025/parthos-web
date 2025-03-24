@@ -1,0 +1,51 @@
+/* Estilo para o container do Kanban */
+.kanban-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #f4f5f7;
+  min-height: 100vh;
+}
+
+/* Estilo para cada coluna do Kanban */
+.kanban-column {
+  width: 32%;
+  background-color: #ffffff;
+  border: 1px solid #e1e4e8;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para o título de cada coluna */
+.kanban-column h3 {
+  font-family: 'Arial', sans-serif;
+  font-size: 1.2em;
+  margin-bottom: 10px;
+  color: #333;
+  text-align: center;
+}
+
+.create-task {
+  width: 100%;
+  padding: 15px;
+  background-color: #1565c0;
+  border: none;
+  border-radius: 0;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.create-task:hover {
+  background-color: #1976d2;
+}
+
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+}

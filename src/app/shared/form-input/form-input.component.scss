@@ -1,0 +1,20 @@
+.input-group {
+  margin-bottom: 20px;
+  position: relative;
+
+  .input-field {
+    width: 100%;
+    padding: 10px;
+    background: #ffffff;
+    border: 2px solid #ffffff;
+    border-radius: 5px;
+    color: rgb(0, 0, 0);
+    font-size: 16px;
+    box-sizing: border-box;
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+    }
+  }
+}

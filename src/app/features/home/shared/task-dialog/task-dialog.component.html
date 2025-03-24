@@ -1,0 +1,61 @@
+<mat-dialog-content class="dialog-content">
+    <h2 class="form-title">Criar Tarefa</h2>
+
+    <form [formGroup]="taskForm" class="form-container">
+        <!-- Coluna Esquerda: Título e Descrição -->
+        <div class="left-column">
+            <mat-form-field class="full-width">
+                <mat-label>Título</mat-label>
+                <input matInput formControlName="title" placeholder="Insira o título da tarefa">
+            </mat-form-field>
+
+            <mat-form-field class="full-width">
+                <mat-label>Descrição</mat-label>
+                <textarea matInput formControlName="description" placeholder="Descreva a tarefa" rows="5"></textarea>
+            </mat-form-field>
+
+        </div>
+
+        <div class="right-column">
+            <mat-form-field class="full-width">
+                <mat-label>Tipo</mat-label>
+                <mat-select formControlName="type">
+                    <mat-option *ngFor="let type of typeOptions" [value]="type">
+                        {{ type }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="full-width">
+                <mat-label>Status</mat-label>
+                <mat-select formControlName="status">
+                    <mat-option *ngFor="let status of statusOptions" [value]="status">
+                        {{ status }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="full-width">
+                <mat-label>Prioridade</mat-label>
+                <mat-select formControlName="priority">
+                    <mat-option *ngFor="let priority of priorityOptions" [value]="priority">
+                        {{ priority }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="full-width">
+                <mat-label>Data de Vencimento</mat-label>
+                <input matInput [matDatepicker]="dueDatePicker" formControlName="dueDate"
+                    placeholder="Selecione a data">
+                <mat-datepicker-toggle matSuffix [for]="dueDatePicker"></mat-datepicker-toggle>
+                <mat-datepicker #dueDatePicker></mat-datepicker>
+            </mat-form-field>
+        </div>
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-button (click)="onNoClick()">Cancelar</button>
+    <button mat-raised-button color="primary" [disabled]="!taskForm.valid" (click)="onSubmit()">Salvar</button>
+</mat-dialog-actions>

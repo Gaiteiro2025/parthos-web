@@ -1,0 +1,17 @@
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #sidenav mode="side" [(opened)]="isExpanded" class="sidenav">
+        <mat-nav-list>
+            <a mat-list-item *ngFor="let item of menuItems" [routerLink]="item.route">
+                <mat-icon class="nav-color" matListIcon>{{ item.icon }}</mat-icon>
+                <span class="nav-color" *ngIf="isExpanded">{{ item.label }}</span>
+            </a>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content class="sidenav-content">
+        <!-- Seu botão de toggle -->
+        <button mat-icon-button (click)="toggleSidenav()">
+            <mat-icon>{{ isExpanded ? 'chevron_left' : 'chevron_right' }}</mat-icon>
+        </button>
+        <ng-content></ng-content>
+    </mat-sidenav-content>
+</mat-sidenav-container>
