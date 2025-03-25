@@ -4,6 +4,7 @@ import { AuthComponent } from './features/auth/auth.component';
 import { LoginComponent } from './features/auth/login/login.component';
 import { RegisterComponent } from './features/auth/register/register.component';
 import { HomeComponent } from './features/home/home.component';
+import { KanbanBoardComponent } from './features/home/kanban-board/kanban-board.component';
 export const routes: Routes = [
     {
         path: '',
@@ -11,8 +12,7 @@ export const routes: Routes = [
         component: HomeComponent,
         children: [
             {
-                path: 'tasks', loadComponent: () =>
-                    import('./features/home/kanban-board/kanban-board.component').then((m) => m.KanbanBoardComponent),
+                path: 'tasks', component: KanbanBoardComponent,
                 canActivate: [authGuard]
             },
             { path: '', redirectTo: '/tasks', pathMatch: 'full' },

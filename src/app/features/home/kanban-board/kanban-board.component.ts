@@ -1,6 +1,6 @@
 import { CdkDragDrop, DragDropModule, moveItemInArray } from '@angular/cdk/drag-drop';
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -10,6 +10,7 @@ import { User } from '@core/interfaces/user.interface';
 import { AuthService } from '@core/services/auth/auth.service';
 import { TaskService } from '@core/services/task/task.service';
 import { ToastrModule } from 'ngx-toastr';
+import { Subscription } from 'rxjs';
 import { Task } from '../../../core/interfaces/task.interface';
 import { TaskDialogComponent } from '../shared/task-dialog/task-dialog.component';
 import { KanbanCardComponent } from './kanban-card/kanban-card.component';
@@ -23,12 +24,14 @@ import { KanbanCardComponent } from './kanban-card/kanban-card.component';
   ],
   templateUrl: './kanban-board.component.html',
   styleUrls: ['./kanban-board.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Default,
 })
-export class KanbanBoardComponent {
+export class KanbanBoardComponent implements OnInit, OnDestroy {
   user: User | null;
   isLoading = false;
+  taskSubscription: Subscription | undefined;
 
-  constructor(private dialog: MatDialog, private taskService: TaskService, private authService: AuthService) {
+  constructor(private dialog: MatDialog, private taskService: TaskService, private authService: AuthService, private cdRef: ChangeDetectorRef) {
     this.user = this.authService.getUser();
   }
   statuses: TaskStatus[] = [TaskStatus.TODO, TaskStatus.IN_PROGRESS, TaskStatus.DONE];
@@ -38,19 +41,25 @@ export class KanbanBoardComponent {
     this.loadTasks();
   }
 
+  ngOnDestroy(): void {
+    if (this.taskSubscription) {
+      this.taskSubscription.unsubscribe();
+    }
+  }
+
   loadTasks(): void {
-    if (!this.user?.id) return
+    if (!this.user?.id || this.isLoading) return;
     this.isLoading = true;
-    this.taskService.findByUserId(this.user.id).subscribe({
+    this.taskSubscription = this.taskService.findByUserId(this.user.id).subscribe({
       next: (tasks) => {
         this.tasks = tasks;
-        this.isLoading = false
+        this.isLoading = false;
+        this.cdRef.detectChanges();
       },
       error: (err) => {
-        this.isLoading = false
-        console.error(err)
-      },
-      complete: () => this.isLoading = false
+        console.error(err);
+        this.isLoading = false;
+      }
     });
   }
 

@@ -71,7 +71,6 @@ export class TaskService {
       const updatedTask = await firstValueFrom(
         this.http.patch<Task>(`${this.baseUrl}${id}`, updateTaskDto, { headers })
       );
-      console.log('teste')
       this.notificationService.success('Tarefa atualizada com sucesso!');
       return updatedTask;
     } catch (error) {
