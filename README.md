@@ -1,59 +1,69 @@
-# ParthosWeb
+# Parthos Web
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.4.
+## Visão Geral
+O **Parthos Web** é a interface SPA (*Single Page Application*) do projeto Parthos, desenvolvido com **Angular** e servido via **Nginx**. O objetivo é fornecer uma experiência imersiva para gerenciamento de tarefas, inspirado no universo de Skyrim.
 
-## Development server
+## Funcionalidades Principais
 
-To start a local development server, run:
+- **Autenticação:** Cadastro e login com suporte a JWT (recuperação de senha ainda não implementada).
+- **Gerenciamento de Tarefas:** Interface baseada no conceito *Kanban* (status adicionais em desenvolvimento).
+- **Registro de Atividades:** Histórico detalhado das ações realizadas em cada tarefa.
 
-```bash
-ng serve
+---
+
+## Releases
+
+- **[Versão 1.0.0](https://github.com/Gaiteiro2025/parthos-web/releases/tag/v1.0.0)** - Primeira versão estável do Parthos Web.
+
+---
+
+## Como Rodar o Projeto
+
+### 1. Clonar o Repositório
+```sh
+git clone git@github.com:Gaiteiro2025/parthos-web.git
+cd parthos-web
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+### 2. Instalar Dependências
+```sh
+npm install
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
+### 3. Iniciar o Servidor de Desenvolvimento
+```sh
+npm start
 ```
+Isso iniciará a aplicação em modo de desenvolvimento, acessível em `http://localhost:4200`.
 
-## Building
-
-To build the project run:
-
-```bash
-ng build
+### 4. Construir para Produção
+```sh
+npm run build
 ```
+O resultado será gerado na pasta `dist/` e pode ser servido via **Nginx** ou outro servidor estático.
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+---
 
-## Running unit tests
+## Deployment
+O frontend é servido via **Nginx**, integrado ao ambiente Docker do Parthos. Para atualizar a versão em produção:
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+1. Build da aplicação:
+   ```sh
+   npm run build
+   ```
+2. Copiar os arquivos para o diretório configurado no **Nginx**.
+3. Reiniciar o serviço do **Nginx**.
 
-```bash
-ng test
-```
+---
 
-## Running end-to-end tests
+## Tecnologias Utilizadas
 
-For end-to-end (e2e) testing, run:
+- **Frontend:** Angular + Material UI
+- **Infraestrutura:** Nginx + Docker
+- **CI/CD:** GitHub Actions
 
-```bash
-ng e2e
-```
+---
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## Licença
+Este projeto está sob a **licença MIT**.
 
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
