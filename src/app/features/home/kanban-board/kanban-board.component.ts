@@ -38,29 +38,23 @@ export class KanbanBoardComponent implements OnInit, OnDestroy {
   tasks: Task[] = [];
 
   ngOnInit(): void {
-    this.loadTasks();
+    this.loadTask();
+
+  }
+
+  private async loadTask() {
+    if (!this.user?.id) return;
+    await this.taskService.findByUserId(this.user.id);
+    this.taskService.task$.subscribe((tasks) => {
+      this.tasks = tasks;
+      this.cdRef.detectChanges();
+    });
   }
 
   ngOnDestroy(): void {
     if (this.taskSubscription) {
       this.taskSubscription.unsubscribe();
     }
-  }
-
-  loadTasks(): void {
-    if (!this.user?.id || this.isLoading) return;
-    this.isLoading = true;
-    this.taskSubscription = this.taskService.findByUserId(this.user.id).subscribe({
-      next: (tasks) => {
-        this.tasks = tasks;
-        this.isLoading = false;
-        this.cdRef.detectChanges();
-      },
-      error: (err) => {
-        console.error(err);
-        this.isLoading = false;
-      }
-    });
   }
 
   getTasksByStatus(status: TaskStatus): Task[] {

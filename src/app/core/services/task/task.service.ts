@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { CreateTaskDto } from '@core/interfaces/create-task-dto.interface';
 import { Task } from '@core/interfaces/task.interface';
 import { UpdateTaskDto } from '@core/interfaces/update-task-dto.interface';
-import { firstValueFrom, Observable } from 'rxjs';
+import { BehaviorSubject, firstValueFrom } from 'rxjs';
 import { NotificationService } from '../notification.service';
 
 @Injectable({
@@ -11,11 +11,14 @@ import { NotificationService } from '../notification.service';
 })
 export class TaskService {
   private baseUrl = 'http://localhost:3000/task-api/task/';
+  private taskSubject = new BehaviorSubject<Task[]>([]);
+  task$ = this.taskSubject.asObservable();
 
   constructor(
     private http: HttpClient,
     private notificationService: NotificationService
-  ) { }
+  ) {
+  }
 
   private getAuthHeaders(): HttpHeaders {
     const token = sessionStorage.getItem('access_token');
@@ -32,6 +35,9 @@ export class TaskService {
         this.http.post<Task>(this.baseUrl, task, { headers })
       );
       this.notificationService.success('Tarefa criada com sucesso!');
+
+      const currentTasks = this.taskSubject.value;
+      this.taskSubject.next([...currentTasks, newTask]);
       return newTask;
     } catch (error) {
       console.error('Erro na criação:', error);
@@ -40,10 +46,11 @@ export class TaskService {
     }
   }
 
-  findByUserId(userId: string): Observable<Task[]> {
+  async findByUserId(userId: string): Promise<void> {
     try {
       const headers = this.getAuthHeaders();
-      return this.http.get<Task[]>(`${this.baseUrl}user/${userId}`, { headers });
+      const tasks = await firstValueFrom(this.http.get<Task[]>(`${this.baseUrl}user/${userId}`, { headers }));
+      this.taskSubject.next(tasks);
     } catch (error) {
       console.error('Erro ao obter tarefas por usuário:', error);
       this.notificationService.error('Erro ao obter tarefas.');
@@ -72,6 +79,14 @@ export class TaskService {
         this.http.patch<Task>(`${this.baseUrl}${id}`, updateTaskDto, { headers })
       );
       this.notificationService.success('Tarefa atualizada com sucesso!');
+
+      const currentTasks = this.taskSubject.value;
+      const index = currentTasks.findIndex(task => task.id === id);
+      if (index !== -1) {
+        currentTasks[index] = updatedTask;
+        this.taskSubject.next([...currentTasks]);
+      }
+
       return updatedTask;
     } catch (error) {
       console.error('Erro na atualização:', error);
@@ -87,6 +102,10 @@ export class TaskService {
         this.http.delete<Task>(`${this.baseUrl}${id}`, { headers })
       );
       this.notificationService.success('Tarefa removida com sucesso!');
+
+      const currentTasks = this.taskSubject.value;
+      this.taskSubject.next(currentTasks.filter(task => task.id !== id));
+
       return removedTask;
     } catch (error) {
       console.error('Erro na remoção:', error);
