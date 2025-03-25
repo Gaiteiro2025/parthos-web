@@ -1,4 +1,5 @@
-FROM node:21 as builder
+FROM node:20 AS builder
+
 WORKDIR /app
 COPY . .
 RUN npm install @angular/cli -g
