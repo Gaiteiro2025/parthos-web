@@ -3,14 +3,11 @@
         <mat-card-header>
             <mat-card-title>{{ task.title }}</mat-card-title>
             <mat-card-subtitle>
-                <mat-chip class="{{getChipTypeClass(task.type)}}">{{ task.type }}</mat-chip>
-                <mat-chip *ngIf="task.priority" [ngClass]="getChipPriorityClass(task.priority)">{{
-                    task.priority
-                    }}</mat-chip>
+                <app-task-chip-type [type]="task.type"></app-task-chip-type>
+                <app-task-chip-priority [priority]="task.priority"></app-task-chip-priority>
             </mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
-            <p>{{ task.description }}</p>
             <small>Responsável: {{ task.assign?.name || 'Não Assignado' }}</small>
         </mat-card-content>
     </mat-card>

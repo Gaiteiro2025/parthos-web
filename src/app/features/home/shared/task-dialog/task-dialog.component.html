@@ -8,14 +8,10 @@
                 <input matInput formControlName="title" placeholder="Insira o título da tarefa">
             </mat-form-field>
 
-            <mat-form-field class="full-width">
-                <mat-label>Descrição</mat-label>
-                <textarea matInput formControlName="description" placeholder="Descreva a tarefa" rows="5"></textarea>
-            </mat-form-field>
+            <app-task-description [control]="taskForm.get('description')"></app-task-description>
 
             <mat-tab-group *ngIf="data.id">
                 <!--- mat-tab label="Mensagems"> Mensagem </!--->
-
                 <mat-tab label="Histórico"><app-task-history [taskId]="data.id"></app-task-history> </mat-tab>
             </mat-tab-group>
         </div>

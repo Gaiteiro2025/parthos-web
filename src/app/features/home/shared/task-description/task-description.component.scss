@@ -1,0 +1,27 @@
+/* Estilos para o textarea de edição */
+.variable-textarea,
+.variable-binding {
+  width: calc(100% - 15px); // 20 pading 2 border
+  min-height: 200px;
+  width: 600px;
+  padding-left: 10px;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0);
+  color: #333;
+  resize: none;
+  /* Impede redimensionamento manual */
+  outline: none;
+}
+
+.variable-textarea:focus {
+  border-color: #0078d4;
+  background-color: #fff;
+}
+
+.variable-binding {
+  padding-left: 10px;
+}
