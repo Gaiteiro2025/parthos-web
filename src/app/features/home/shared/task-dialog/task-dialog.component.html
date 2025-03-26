@@ -1,13 +1,7 @@
 <mat-dialog-content class="dialog-content">
-    <h2 class="form-title">Criar Tarefa</h2>
-
     <form [formGroup]="taskForm" class="form-container">
         <div class="left-column">
-            <mat-form-field class="full-width custom-form-field">
-                <mat-label>Título</mat-label>
-                <input matInput formControlName="title" placeholder="Insira o título da tarefa">
-            </mat-form-field>
-
+            <app-task-title [control]="taskForm.get('title')"></app-task-title>
             <app-task-description [control]="taskForm.get('description')"></app-task-description>
 
             <mat-tab-group *ngIf="data.id">

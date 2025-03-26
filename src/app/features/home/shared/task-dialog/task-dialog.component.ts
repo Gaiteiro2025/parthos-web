@@ -18,12 +18,13 @@ import { AuthService } from '@core/services/auth/auth.service';
 import { TaskService } from '@core/services/task/task.service';
 import { TaskDescriptionComponent } from '../task-description/task-description.component';
 import { TaskHistoryComponent } from '../task-history/task-history.component';
+import { TaskTitleComponent } from '../task-title/task-title.component';
 
 @Component({
   selector: 'app-create-task-dialog',
   imports: [ReactiveFormsModule, CommonModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatDialogModule, MatOptionModule, MatDatepickerModule,
     MatNativeDateModule,
-    MatButtonModule, MatTabsModule, TaskHistoryComponent, TaskDescriptionComponent
+    MatButtonModule, MatTabsModule, TaskHistoryComponent, TaskDescriptionComponent, TaskTitleComponent
   ],
   standalone: true,
   templateUrl: './task-dialog.component.html',
