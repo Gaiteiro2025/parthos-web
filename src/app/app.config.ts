@@ -5,6 +5,7 @@ import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { authInterceptor } from '@core/auth.interceptor';
+import { provideMarkdown } from 'ngx-markdown';
 import { ToastrModule } from 'ngx-toastr';
 import { routes } from './app.routes';
 import { AuthService } from './core/services/auth/auth.service';
@@ -18,5 +19,5 @@ export const appConfig: ApplicationConfig = {
     importProvidersFrom(AuthService),
     provideNativeDateAdapter(),
     importProvidersFrom(ToastrModule.forRoot()),
-    provideAnimations(),]
+    provideAnimations(), provideMarkdown()]
 };

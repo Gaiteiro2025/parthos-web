@@ -1,0 +1,12 @@
+<div>
+    <mat-tab-group [selectedIndex]="selectedTab">
+        <mat-tab label="Editar">
+            <textarea class="variable-textarea" [formControl]="getFormControl()"></textarea>
+        </mat-tab>
+        <mat-tab label="Preview">
+            <div class="variable-binding">
+                <markdown [data]="getFormControl().value"></markdown>
+            </div>
+        </mat-tab>
+    </mat-tab-group>
+</div>
