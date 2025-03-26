@@ -1,0 +1,26 @@
+.mat-chip {
+  font-size: 0.875em;
+  border-radius: 5px;
+  padding: 2px 8px;
+}
+
+/* Priority Levels */
+.low-priority-chip {
+  border: solid 4px #2ecc71;
+  color: #2ecc71;
+}
+
+.medium-priority-chip {
+  border: solid 4px #f1c40f;
+  color: #f1c40f;
+}
+
+.high-priority-chip {
+  border: solid 4px #e67e22;
+  color: #e67e22;
+}
+
+.urgent-priority-chip {
+  border: solid 4px #c0392b;
+  color: #c0392b;
+}
