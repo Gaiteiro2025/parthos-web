@@ -1,0 +1,48 @@
+.task-title-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.title-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  font-size: 24px;
+  font-weight: bold;
+  padding: 8px;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.2s;
+  width: 100%;
+
+  &:hover {
+    border-color: #ccc;
+  }
+}
+
+.task-title {
+  flex: 1;
+}
+
+.edit-icon {
+  margin-left: 8px;
+  color: #666;
+}
+
+.edit-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.task-title-input {
+  flex: 1;
+  font-size: 24px;
+  font-weight: bold;
+  padding: 4px 8px;
+  border: none;
+  border-bottom: 2px solid #007bff;
+  outline: none;
+}

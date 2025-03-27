@@ -1,0 +1,19 @@
+<div class="full-width">
+    <label>Status</label>
+    <mat-select [formControl]="getFormControl()" panelClass="custom-select-panel">
+        <!-- Customização da opção selecionada -->
+        <mat-select-trigger>
+            <div class="selected-option" [ngClass]="getChipStatusClass(getFormControl().value)">
+                <span class="color-indicator"></span>
+                <span class="option-text">{{ getFormControl().value || 'Selecione um status' }}</span>
+            </div>
+        </mat-select-trigger>
+
+        <mat-option *ngFor="let status of statusOptions" [value]="status">
+            <div class="option-container">
+                <span class="color-indicator" [ngClass]="getChipStatusClass(status)"></span>
+                <span class="option-text">{{ status }}</span>
+            </div>
+        </mat-option>
+    </mat-select>
+</div>

@@ -1,4 +1,25 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+    /* Priority Colors */
+    --low-priority-color: #2ecc71;
+    --medium-priority-color: #f1c40f;
+    --high-priority-color: #e67e22;
+    --urgent-priority-color: #c0392b;
+
+    /* Status Colors */
+    --todo-color: #95a5a6;
+    --in-progress-color: #3498db;
+    --in-review-color: #9b59b6;
+    --done-color: #2ecc71;
+    --blocked-color: #e74c3c;
+
+    /* Types Colors */
+    --bug-color: #d73a49;
+    --task-color: #0366d6;
+    --feature-color: #28a745;
+    --epic-color: #8e44ad;
+    --improvement-color: #f39c12;
+}
+
 
 * {
     margin: 0px;

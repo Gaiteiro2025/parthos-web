@@ -1,0 +1,19 @@
+<div class="full-width">
+    <label>Prioridade</label>
+    <mat-select [formControl]="getFormControl()" panelClass="custom-select-panel">
+        <!-- Customização da opção selecionada -->
+        <mat-select-trigger>
+            <div class="selected-option" [ngClass]="getChipPriorityClass(getFormControl().value)">
+                <span class="color-indicator"></span>
+                <span class="option-text">{{ getFormControl().value || 'Selecione a prioridade' }}</span>
+            </div>
+        </mat-select-trigger>
+
+        <mat-option *ngFor="let priority of priorityOptions" [value]="priority">
+            <div class="option-container">
+                <span class="color-indicator" [ngClass]="getChipPriorityClass(priority)"></span>
+                <span class="option-text">{{ priority }}</span>
+            </div>
+        </mat-option>
+    </mat-select>
+</div>

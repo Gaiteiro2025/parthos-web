@@ -1,0 +1,51 @@
+.full-width {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.date-container {
+  display: flex;
+  align-items: center;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  margin-right: 5px;
+  padding: 0px 5px;
+}
+
+.date-container input {
+  background-color: rgba(255, 255, 255, 0) !important;
+  border: none;
+  outline: none;
+  width: 100%;
+  padding: 8px 0;
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif;
+  color: #333;
+  transition: border-color 0.3s ease;
+}
+
+.date-container input:focus {
+  border: none;
+  outline: none;
+  box-shadow: 0 0 0 2px #2ecc71;
+}
+
+.due-date-overdue {
+  border-color: #e74c3c;
+  color: #e74c3c;
+}
+
+.due-date-today {
+  border-color: #f39c12;
+  color: #f39c12;
+}
+
+.due-date-future {
+  border-color: #2ecc71;
+  color: #2ecc71;
+}

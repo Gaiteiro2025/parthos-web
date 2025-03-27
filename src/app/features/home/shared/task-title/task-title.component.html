@@ -1,0 +1,14 @@
+<div class="task-title-container">
+  <div class="title-wrapper" *ngIf="!editing" (click)="toggleEditing()">
+    <span class="task-title">{{ getFormControl().value || 'Nova Tarefa' }}</span>
+    <mat-icon class="edit-icon">edit</mat-icon>
+  </div>
+
+  <div *ngIf="editing" class="edit-wrapper">
+    <input #titleInput class="task-title-input" [formControl]="getFormControl()" (blur)="saveOrCancelEdit()"
+      autofocus />
+    <button mat-icon-button color="warn" (mousedown)="cancelEditing($event)">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+</div>
