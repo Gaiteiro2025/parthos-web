@@ -1,13 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
-import { MatNativeDateModule, MatOptionModule } from '@angular/material/core';
-import { MatDatepickerModule } from '@angular/material/datepicker';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatButton } from '@angular/material/button';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select';
 import { MatTabsModule } from '@angular/material/tabs';
 import { TaskPriority } from '@core/enums/task-priority.enum';
 import { TaskStatus } from '@core/enums/task-status.enum';
@@ -17,15 +12,17 @@ import { User } from '@core/interfaces/user.interface';
 import { AuthService } from '@core/services/auth/auth.service';
 import { TaskService } from '@core/services/task/task.service';
 import { TaskDescriptionComponent } from '../task-description/task-description.component';
+import { TaskDueDateComponent } from "../task-due-date/task-due-date.component";
 import { TaskHistoryComponent } from '../task-history/task-history.component';
+import { TaskSelectPriorityComponent } from '../task-select-priority/task-select-priority.component';
+import { TaskSelectStatusComponent } from "../task-select-status/task-select-status.component";
+import { TaskSelectTypeComponent } from "../task-select-type/task-select-type.component";
 import { TaskTitleComponent } from '../task-title/task-title.component';
 
 @Component({
   selector: 'app-create-task-dialog',
-  imports: [ReactiveFormsModule, CommonModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatDialogModule, MatOptionModule, MatDatepickerModule,
-    MatNativeDateModule,
-    MatButtonModule, MatTabsModule, TaskHistoryComponent, TaskDescriptionComponent, TaskTitleComponent
-  ],
+  imports: [CommonModule, MatDialogModule, MatButton,
+    MatTabsModule, TaskHistoryComponent, TaskDescriptionComponent, TaskTitleComponent, TaskSelectPriorityComponent, TaskSelectTypeComponent, TaskSelectStatusComponent, TaskDueDateComponent,],
   standalone: true,
   templateUrl: './task-dialog.component.html',
   styleUrl: './task-dialog.component.scss',
@@ -33,9 +30,6 @@ import { TaskTitleComponent } from '../task-title/task-title.component';
 })
 export class TaskDialogComponent {
   taskForm: FormGroup;
-  statusOptions = Object.values(TaskStatus);
-  priorityOptions = Object.values(TaskPriority);
-  typeOptions = Object.values(TaskType);
   user: User | null;
   constructor(
     public dialogRef: MatDialogRef<TaskDialogComponent>,

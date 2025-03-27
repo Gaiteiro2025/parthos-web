@@ -1,5 +1,5 @@
 <mat-dialog-content class="dialog-content">
-    <form [formGroup]="taskForm" class="form-container">
+    <form class="form-container">
         <div class="left-column">
             <app-task-title [control]="taskForm.get('title')"></app-task-title>
             <app-task-description [control]="taskForm.get('description')"></app-task-description>
@@ -10,40 +10,10 @@
             </mat-tab-group>
         </div>
         <div class="right-column">
-            <mat-form-field class="full-width">
-                <mat-label>Tipo</mat-label>
-                <mat-select formControlName="type">
-                    <mat-option *ngFor="let type of typeOptions" [value]="type">
-                        {{ type }}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
-
-            <mat-form-field class="full-width">
-                <mat-label>Status</mat-label>
-                <mat-select formControlName="status">
-                    <mat-option *ngFor="let status of statusOptions" [value]="status">
-                        {{ status }}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
-
-            <mat-form-field class="full-width">
-                <mat-label>Prioridade</mat-label>
-                <mat-select formControlName="priority">
-                    <mat-option *ngFor="let priority of priorityOptions" [value]="priority">
-                        {{ priority }}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
-
-            <mat-form-field class="full-width">
-                <mat-label>Data de Vencimento</mat-label>
-                <input matInput [matDatepicker]="dueDatePicker" formControlName="dueDate"
-                    placeholder="Selecione a data">
-                <mat-datepicker-toggle matSuffix [for]="dueDatePicker"></mat-datepicker-toggle>
-                <mat-datepicker #dueDatePicker></mat-datepicker>
-            </mat-form-field>
+            <app-task-select-type [control]="taskForm.get('type')"></app-task-select-type>
+            <app-task-select-priority [control]="taskForm.get('priority')"></app-task-select-priority>
+            <app-task-select-status [control]="taskForm.get('status')"></app-task-select-status>
+            <app-task-due-date [control]="taskForm.get('dueDate')"></app-task-due-date>
         </div>
     </form>
 </mat-dialog-content>
