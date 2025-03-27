@@ -6,26 +6,26 @@
 
 /* Task Types */
 .bug-chip {
-  border: solid 4px #d73a49;
-  color: #d73a49;
+  border: solid 4px var(--bug-color);
+  color: var(--bug-color);
 }
 
 .task-chip {
-  border: solid 4px #0366d6;
-  color: #0366d6;
+  border: solid 4px var(--task-color);
+  color: var(--task-color);
 }
 
 .feature-chip {
-  border: solid 4px #28a745;
-  color: #28a745;
+  border: solid 4px var(--feature-color);
+  color: var(--feature-color);
 }
 
 .epic-chip {
-  border: solid 4px #8e44ad;
-  color: #8e44ad;
+  border: solid 4px var(--epic-color);
+  color: var(--epic-color);
 }
 
 .improvement-chip {
-  border: solid 4px #f39c12;
-  color: #f39c12;
+  border: solid 4px var(--improvement-color);
+  color: var(--improvement-color);
 }

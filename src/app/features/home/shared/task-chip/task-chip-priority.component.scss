@@ -4,23 +4,23 @@
   padding: 2px 8px;
 }
 
-/* Priority Levels */
+/* Priority Styles */
 .low-priority-chip {
-  border: solid 4px #2ecc71;
-  color: #2ecc71;
+  border: solid 4px var(--low-priority-color);
+  color: var(--low-priority-color);
 }
 
 .medium-priority-chip {
-  border: solid 4px #f1c40f;
-  color: #f1c40f;
+  border: solid 4px var(--medium-priority-color);
+  color: var(--medium-priority-color);
 }
 
 .high-priority-chip {
-  border: solid 4px #e67e22;
-  color: #e67e22;
+  border: solid 4px var(--high-priority-color);
+  color: var(--high-priority-color);
 }
 
 .urgent-priority-chip {
-  border: solid 4px #c0392b;
-  color: #c0392b;
+  border: solid 4px var(--urgent-priority-color);
+  color: var(--urgent-priority-color);
 }
