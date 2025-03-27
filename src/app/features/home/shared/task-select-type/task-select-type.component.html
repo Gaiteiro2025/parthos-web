@@ -1,0 +1,18 @@
+<div class="full-width">
+    <label>Tipo</label>
+    <mat-select [formControl]="getFormControl()" panelClass="custom-select-panel">
+        <mat-select-trigger>
+            <div class="selected-option" [ngClass]="getChipTypeClass(getFormControl().value)">
+                <span class="color-indicator"></span>
+                <span class="option-text">{{ getFormControl().value || 'Selecione um tipo' }}</span>
+            </div>
+        </mat-select-trigger>
+
+        <mat-option *ngFor="let type of typeOptions" [value]="type">
+            <div class="option-container">
+                <span class="color-indicator" [ngClass]="getChipTypeClass(type)"></span>
+                <span class="option-text">{{ type }}</span>
+            </div>
+        </mat-option>
+    </mat-select>
+</div>
